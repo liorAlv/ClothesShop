@@ -1,11 +1,11 @@
-package il.ac.hit.jfxbookies.library.sales;
+package il.ac.hit.jfxclothesshop.library.sales;
 
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import il.ac.hit.jfxbookies.library.clothing.Clothing;
-import il.ac.hit.jfxbookies.person.Client;
+import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.person.Client;
 import lombok.*;
 
 import java.util.Calendar;

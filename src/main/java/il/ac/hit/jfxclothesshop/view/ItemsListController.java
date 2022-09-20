@@ -1,10 +1,10 @@
-package il.ac.hit.jfxbookies.view;
+package il.ac.hit.jfxclothesshop.view;
 
-import il.ac.hit.jfxbookies.library.clothing.Clothing;
-import il.ac.hit.jfxbookies.library.sales.SalesManager;
-import il.ac.hit.jfxbookies.library.sales.Inventory;
-import il.ac.hit.jfxbookies.person.Client;
-import il.ac.hit.jfxbookies.util.GraphicsUtils;
+import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.library.sales.SalesManager;
+import il.ac.hit.jfxclothesshop.library.sales.Inventory;
+import il.ac.hit.jfxclothesshop.person.Client;
+import il.ac.hit.jfxclothesshop.util.GraphicsUtils;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 import java.sql.SQLException;
 import java.util.List;
 
-import static il.ac.hit.jfxbookies.session.SessionContext.getInstance;
+import static il.ac.hit.jfxclothesshop.session.SessionContext.getInstance;
 
 @Component
 @FxmlView("booksListPage.fxml")

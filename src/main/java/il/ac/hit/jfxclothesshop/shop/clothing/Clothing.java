@@ -1,9 +1,9 @@
-package il.ac.hit.jfxbookies.library.clothing;
+package il.ac.hit.jfxclothesshop.library.clothing;
 
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import il.ac.hit.jfxbookies.JdbcDriverSetup;
+import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
 import lombok.*;
 
 import java.sql.SQLException;

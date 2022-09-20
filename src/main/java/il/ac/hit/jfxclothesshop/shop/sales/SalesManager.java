@@ -1,8 +1,8 @@
-package il.ac.hit.jfxbookies.library.sales;
+package il.ac.hit.jfxclothesshop.library.sales;
 
-import il.ac.hit.jfxbookies.JdbcDriverSetup;
-import il.ac.hit.jfxbookies.library.clothing.Clothing;
-import il.ac.hit.jfxbookies.person.Client;
+import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
+import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.person.Client;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

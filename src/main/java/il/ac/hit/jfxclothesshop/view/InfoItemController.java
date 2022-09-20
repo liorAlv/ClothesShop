@@ -1,14 +1,14 @@
-package il.ac.hit.jfxbookies.view;
+package il.ac.hit.jfxclothesshop.view;
 
-import il.ac.hit.jfxbookies.JdbcDriverSetup;
-import il.ac.hit.jfxbookies.library.clothing.Clothing;
-import il.ac.hit.jfxbookies.library.sales.SalesManager;
-import il.ac.hit.jfxbookies.library.sales.Sales;
-import il.ac.hit.jfxbookies.library.sales.Inventory;
-import il.ac.hit.jfxbookies.person.Client;
-import il.ac.hit.jfxbookies.person.User;
-import il.ac.hit.jfxbookies.session.SessionContext;
-import il.ac.hit.jfxbookies.util.GraphicsUtils;
+import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
+import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.library.sales.SalesManager;
+import il.ac.hit.jfxclothesshop.library.sales.Sales;
+import il.ac.hit.jfxclothesshop.library.sales.Inventory;
+import il.ac.hit.jfxclothesshop.person.Client;
+import il.ac.hit.jfxclothesshop.person.User;
+import il.ac.hit.jfxclothesshop.session.SessionContext;
+import il.ac.hit.jfxclothesshop.util.GraphicsUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
-import static il.ac.hit.jfxbookies.session.SessionContext.getInstance;
+import static il.ac.hit.jfxclothesshop.session.SessionContext.getInstance;
 
 
 @Component
