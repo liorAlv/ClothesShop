@@ -1,8 +1,8 @@
-package il.ac.hit.jfxbookies.person.managing;
+package il.ac.hit.jfxclothesshop.person.managing;
 
 import com.j256.ormlite.stmt.Where;
-import il.ac.hit.jfxbookies.JdbcDriverSetup;
-import il.ac.hit.jfxbookies.person.Client;
+import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
+import il.ac.hit.jfxclothesshop.person.Client;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;

@@ -1,8 +1,8 @@
-package il.ac.hit.jfxbookies.view;
+package il.ac.hit.jfxclothesshop.view;
 
-import il.ac.hit.jfxbookies.JdbcDriverSetup;
-import il.ac.hit.jfxbookies.person.Client;
-import il.ac.hit.jfxbookies.util.GraphicsUtils;
+import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
+import il.ac.hit.jfxclothesshop.person.Client;
+import il.ac.hit.jfxclothesshop.util.GraphicsUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 import java.sql.SQLException;
 import java.util.List;
 
-import static il.ac.hit.jfxbookies.session.SessionContext.getInstance;
+import static il.ac.hit.jfxclothesshop.session.SessionContext.getInstance;
 
 @Component
 @FxmlView("clientListPage.fxml")
@@ -115,7 +115,7 @@ public class ClientListController {
 
     public void onBackButtonClick(ActionEvent event) {
         clientObservableList.clear();   //That there will be no duplicates in data table
-        GraphicsUtils.openWindow(event, BooksListController.class);//Move between pages
+        GraphicsUtils.openWindow(event, ItemsListController.class);//Move between pages
     }
 
 

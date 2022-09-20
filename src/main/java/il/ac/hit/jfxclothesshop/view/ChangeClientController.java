@@ -1,11 +1,11 @@
-package il.ac.hit.jfxbookies.view;
+package il.ac.hit.jfxclothesshop.view;
 
-import il.ac.hit.jfxbookies.library.sales.SalesManager;
-import il.ac.hit.jfxbookies.person.Client;
-import il.ac.hit.jfxbookies.person.managing.ClientUtils;
-import il.ac.hit.jfxbookies.person.managing.ClientManager;
-import il.ac.hit.jfxbookies.session.SessionContext;
-import il.ac.hit.jfxbookies.util.GraphicsUtils;
+import il.ac.hit.jfxclothesshop.shop.sales.SalesManager;
+import il.ac.hit.jfxclothesshop.person.Client;
+import il.ac.hit.jfxclothesshop.person.managing.ClientUtils;
+import il.ac.hit.jfxclothesshop.person.managing.ClientManager;
+import il.ac.hit.jfxclothesshop.session.SessionContext;
+import il.ac.hit.jfxclothesshop.util.GraphicsUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -35,7 +35,7 @@ public class ChangeClientController {
     @Autowired
     private ClientManager clientManager;
     @Autowired
-    private SalesManager bookBorrow;
+    private SalesManager itemBorrow;
 
     public void initialize() {
         //loaded the data on specific client
@@ -58,7 +58,7 @@ public class ChangeClientController {
 
         try {
             clientManager.deleteClient(String.valueOf(Integer.parseInt(idLabel.getText())));
-            bookBorrow.deleteBookBorrowByClient(Integer.parseInt(idLabel.getText()));
+            itemBorrow.deleteItemBorrowByClient(Integer.parseInt(idLabel.getText()));
             GraphicsUtils.openWindow(event, ClientListController.class);  //Move between pages
         } catch (SQLException e) {
             e.printStackTrace();

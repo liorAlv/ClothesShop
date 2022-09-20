@@ -1,7 +1,7 @@
-package il.ac.hit.jfxclothesshop.library.sales;
+package il.ac.hit.jfxclothesshop.shop.sales;
 
 import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
-import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.shop.clothing.Clothing;
 import il.ac.hit.jfxclothesshop.person.Client;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -9,28 +9,28 @@ import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 import java.util.List;
 
-//taking data of borrowed book from DB
+//taking data of borrowed item from DB
 @Service
 @Slf4j
 public class SalesManager {
-    public Client getActiveClientForBook(int id) throws SQLException {
-        Sales borrowBook = JdbcDriverSetup
+    public Client getActiveClientForItem(int id) throws SQLException {
+        Sales borrowItem = JdbcDriverSetup
                 .getDao(Sales.class)
                 .queryBuilder()
                 .where()
-                .eq("book_id", id)
+                .eq("item_id", id)
                 .and()
                 .eq("active", true)
                 .queryForFirst();
-        if (borrowBook != null) {
-            return borrowBook.getClient();
+        if (borrowItem != null) {
+            return borrowItem.getClient();
         } else {
             return null;
         }
     }
 
-    //taking data of how much borrowed book we have from DB
-    public long getActiveBookBorrowsSize() throws SQLException {
+    //taking data of how much borrowed item we have from DB
+    public long getActiveItemBorrowsSize() throws SQLException {
         return JdbcDriverSetup.getDao(Sales.class)
                 .queryBuilder()
                 .where()
@@ -38,11 +38,11 @@ public class SalesManager {
                 .countOf();
     }
 
-    //build the data of borrow book
-    public Sales borrowBookByClient(Clothing book, Client client) throws SQLException {
+    //build the data of borrow item
+    public Sales borrowItemByClient(Clothing item, Client client) throws SQLException {
         var borrow = Sales
                 .builder()
-                .book(book)
+                .item(item)
                 .client(client)
                 .active(true)
                 .build();
@@ -50,19 +50,19 @@ public class SalesManager {
         return borrow;
     }
 
-    //return book
-    public void deactivateBookBorrow(Sales borrowBook) throws SQLException {
-        borrowBook.setActive(false);
+    //return item
+    public void deactivateItemBorrow(Sales borrowItem) throws SQLException {
+        borrowItem.setActive(false);
         JdbcDriverSetup.getDao(Sales.class)
-                .update(borrowBook);
+                .update(borrowItem);
     }
 
     //delete from data
-    public void deleteBookBorrowByClient(int clientID) throws SQLException{
-        List<Sales> borrowBookList = JdbcDriverSetup.getDao(Sales.class).queryBuilder()
+    public void deleteItemBorrowByClient(int clientID) throws SQLException{
+        List<Sales> borrowItemList = JdbcDriverSetup.getDao(Sales.class).queryBuilder()
                         .where()
                         .eq("client_id", clientID).query();
-        JdbcDriverSetup.getDao(Sales.class).delete(borrowBookList);
+        JdbcDriverSetup.getDao(Sales.class).delete(borrowItemList);
     }
 
 

@@ -1,11 +1,11 @@
-package il.ac.hit.jfxbookies.view;
+package il.ac.hit.jfxclothesshop.view;
 
-import il.ac.hit.jfxbookies.JdbcDriverSetup;
-import il.ac.hit.jfxbookies.library.clothing.Clothing;
-import il.ac.hit.jfxbookies.library.sales.SalesManager;
-import il.ac.hit.jfxbookies.library.sales.Inventory;
-import il.ac.hit.jfxbookies.person.Client;
-import il.ac.hit.jfxbookies.util.GraphicsUtils;
+import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
+import il.ac.hit.jfxclothesshop.shop.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.shop.sales.SalesManager;
+import il.ac.hit.jfxclothesshop.shop.sales.Inventory;
+import il.ac.hit.jfxclothesshop.person.Client;
+import il.ac.hit.jfxclothesshop.util.GraphicsUtils;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,22 +44,22 @@ public class ReportController {
     @FXML
     private TableColumn<Clothing, String> borrowByTableColumn;
     @FXML
-    private Label numberOfBorrowedBooksLabel;
+    private Label numberOfBorrowedItemsLabel;
     @FXML
-    private Label numberOfBooksLabel;
+    private Label numberOfItemsLabel;
 
     @Autowired
     private FxWeaver fxWeaver;
     @Autowired
-    private SalesManager bookBorrowManager;
+    private SalesManager itemBorrowManager;
     @Autowired
     private Inventory inventory;
 
-    private final ObservableList<Clothing> bookObservableList = FXCollections.observableArrayList();
+    private final ObservableList<Clothing> itemObservableList = FXCollections.observableArrayList();
 
     public void initialize() {
         try {
-            List<Clothing> books = JdbcDriverSetup.getDao(Clothing.class).queryForAll();//inventory.showInventory();
+            List<Clothing> items = JdbcDriverSetup.getDao(Clothing.class).queryForAll();//inventory.showInventory();
 
             //show the data on table view
             idTableColumn.setCellValueFactory(new PropertyValueFactory<>("sku"));
@@ -68,23 +68,23 @@ public class ReportController {
             categoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
             locationTableColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
             borrowByTableColumn.setCellValueFactory(cellData ->{
-                var book = cellData.getValue();
+                var item = cellData.getValue();
 
                 try {
-                    Client activeClientForBook = bookBorrowManager.getActiveClientForBook(book.getSku());
-                    if (activeClientForBook != null) {
-                        return new ReadOnlyStringWrapper(Integer.toString(activeClientForBook.getId()));
+                    Client activeClientForItem = itemBorrowManager.getActiveClientForItem(item.getSku());
+                    if (activeClientForItem != null) {
+                        return new ReadOnlyStringWrapper(Integer.toString(activeClientForItem.getId()));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 return null;
             });
-            bookObservableList.addAll(books);
-            dataTable.setItems(bookObservableList);
+            itemObservableList.addAll(items);
+            dataTable.setItems(itemObservableList);
 
-            numberOfBooksLabel.setText(String.valueOf(inventory.getBooksCount()));    //number of books
-            numberOfBorrowedBooksLabel.setText(String.valueOf(bookBorrowManager.getActiveBookBorrowsSize()));  //number of borrowed books
+            numberOfItemsLabel.setText(String.valueOf(inventory.getItemsCount()));    //number of items
+            numberOfBorrowedItemsLabel.setText(String.valueOf(itemBorrowManager.getActiveItemBorrowsSize()));  //number of borrowed items
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,8 +93,8 @@ public class ReportController {
 
     //Move between pages
     public void onBackButtonClick(ActionEvent event) {
-        bookObservableList.clear();
-        GraphicsUtils.openWindow(event, BooksListController.class);
+        itemObservableList.clear();
+        GraphicsUtils.openWindow(event, ItemsListController.class);
     }
 
 

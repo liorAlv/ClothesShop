@@ -1,12 +1,12 @@
-package il.ac.hit.jfxbookies;
+package il.ac.hit.jfxclothesshop;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import il.ac.hit.jfxbookies.person.User;
-import il.ac.hit.jfxbookies.startup.Setup;
-import il.ac.hit.jfxbookies.view.LoginController;
+import il.ac.hit.jfxclothesshop.person.User;
+import il.ac.hit.jfxclothesshop.startup.Setup;
+import il.ac.hit.jfxclothesshop.view.LoginController;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 
-//@SpringBootApplication(scanBasePackages = "il.ac.hit.jfxbookies.*")
+//@SpringBootApplication(scanBasePackages = "il.ac.hit.jfxclothesshop.*")
 public class FxApplication extends Application {
     private ConfigurableApplicationContext springContext;
 
@@ -77,7 +77,7 @@ public class FxApplication extends Application {
         FxWeaver fxWeaver = springContext.getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(LoginController.class);
         Scene scene = new Scene(root, 500, 400);
-        stage.setTitle("Bookies");
+        stage.setTitle("Clothes Shop");
         stage.setScene(scene);
         stage.show();
     }

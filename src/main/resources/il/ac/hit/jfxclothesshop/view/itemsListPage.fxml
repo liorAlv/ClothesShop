@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.ac.hit.jfxclothesshop.view.BooksListController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.ac.hit.jfxclothesshop.view.ItemsListController">
    <children>
-      <Label layoutX="70.0" layoutY="60.0" text="Search Book:" />
+      <Label layoutX="70.0" layoutY="60.0" text="Search Item:" />
       <TableView fx:id="dataTable" layoutX="62.0" layoutY="100.0" prefHeight="350.0" prefWidth="819.0">
         <columns>
           <TableColumn fx:id="idTableColumn" prefWidth="47.333335876464844" text="ID" />
@@ -16,8 +16,8 @@
             <TableColumn fx:id="borrowedByColumn" prefWidth="144.0" text="Borrowed By (client ID)" />
         </columns>
       </TableView>
-      <TextField fx:id="searchBookField" layoutX="144.0" layoutY="56.0" prefHeight="25.0" prefWidth="577.0" />
-      <Button id="AddBook" fx:id="newBookButton" layoutX="745.0" layoutY="14.0" mnemonicParsing="false" onAction="#onNewBookButtonClick" text="New Book" />
+      <TextField fx:id="searchItemField" layoutX="144.0" layoutY="56.0" prefHeight="25.0" prefWidth="577.0" />
+      <Button id="AddItem" fx:id="newItemButton" layoutX="745.0" layoutY="14.0" mnemonicParsing="false" onAction="#onNewItemButtonClick" text="New Item" />
       <Button id="Client" fx:id="clientButton" layoutX="830.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClientButtonClick" text="Client" />
       <Button fx:id="reportButton" layoutX="676.0" layoutY="14.0" mnemonicParsing="false" onAction="#onReportButtonClick" text="Report" />
       <Label layoutX="11.0" layoutY="8.0" text="Logged in: " />

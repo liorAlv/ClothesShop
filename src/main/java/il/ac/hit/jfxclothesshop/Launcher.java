@@ -1,4 +1,4 @@
-package il.ac.hit.jfxbookies;
+package il.ac.hit.jfxclothesshop;
 
 import javafx.application.Application;
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication(scanBasePackages = "il.ac.hit.jfxbookies")
+@SpringBootApplication(scanBasePackages = "il.ac.hit.jfxclothesshop")
 public class Launcher {
 
     public static void main(String[] args) {

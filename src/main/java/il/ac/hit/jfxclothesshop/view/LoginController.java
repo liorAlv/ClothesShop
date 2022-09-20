@@ -1,27 +1,21 @@
-package il.ac.hit.jfxbookies.view;
+package il.ac.hit.jfxclothesshop.view;
 
-import il.ac.hit.jfxbookies.JdbcDriverSetup;
-import il.ac.hit.jfxbookies.person.User;
-import il.ac.hit.jfxbookies.session.SessionContext;
-import il.ac.hit.jfxbookies.util.GraphicsUtils;
+import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
+import il.ac.hit.jfxclothesshop.person.User;
+import il.ac.hit.jfxclothesshop.session.SessionContext;
+import il.ac.hit.jfxclothesshop.util.GraphicsUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -65,7 +59,7 @@ public class LoginController {
 
     //Move between pages
     private void onSuccessfulLogin(ActionEvent event){
-        GraphicsUtils.openWindow(event, BooksListController.class);
+        GraphicsUtils.openWindow(event, ItemsListController.class);
     }
 
 

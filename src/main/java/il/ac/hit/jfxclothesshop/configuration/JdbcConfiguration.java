@@ -1,4 +1,4 @@
-package il.ac.hit.jfxbookies.configuration;
+package il.ac.hit.jfxclothesshop.configuration;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;

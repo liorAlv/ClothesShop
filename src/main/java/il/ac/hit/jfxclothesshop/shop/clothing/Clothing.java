@@ -1,4 +1,4 @@
-package il.ac.hit.jfxclothesshop.library.clothing;
+package il.ac.hit.jfxclothesshop.shop.clothing;
 
 
 import com.j256.ormlite.field.DatabaseField;
@@ -8,7 +8,7 @@ import lombok.*;
 
 import java.sql.SQLException;
 
-@DatabaseTable(tableName = "books")
+@DatabaseTable//(tableName = "items")
 @NoArgsConstructor
 @Data
 public class Clothing {
@@ -34,8 +34,8 @@ public class Clothing {
 
     }
 
-    // taking data of book from DB
-    public Clothing showBookInfo(String sku){
+    // taking data of item from DB
+    public Clothing showItemInfo(String sku){
         try {
             return JdbcDriverSetup.getDao(Clothing.class).queryForId(sku);
 

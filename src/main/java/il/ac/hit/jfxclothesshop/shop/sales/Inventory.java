@@ -1,8 +1,8 @@
-package il.ac.hit.jfxclothesshop.library.sales;
+package il.ac.hit.jfxclothesshop.shop.sales;
 
 
 import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
-import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.shop.clothing.Clothing;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -16,12 +16,12 @@ public class Inventory {
 
     }
 
-    public long getBooksCount() throws SQLException {
+    public long getItemsCount() throws SQLException {
         return JdbcDriverSetup.getDao(Clothing.class).countOf();
     }
 
-    public void add(Clothing book) throws SQLException {
-        JdbcDriverSetup.getDao(Clothing.class).create(book);
+    public void add(Clothing item) throws SQLException {
+        JdbcDriverSetup.getDao(Clothing.class).create(item);
     }
 
     public void remove(int sku) throws SQLException {
@@ -29,15 +29,15 @@ public class Inventory {
 
     }
 
-    public boolean hasBook(Clothing book) throws SQLException {
+    public boolean hasItem(Clothing item) throws SQLException {
 
         return JdbcDriverSetup.getDao(Clothing.class).queryBuilder()
                 .where()
-                .eq("id", book.getSku())
+                .eq("id", item.getSku())
                 .countOf() > 0;
     }
 
-    public List<Clothing> getFilteredBooks(String keyword) throws SQLException {
+    public List<Clothing> getFilteredItems(String keyword) throws SQLException {
         String likeKeyword = "%" + keyword + "%";
         return JdbcDriverSetup.getDao(Clothing.class)
                 .queryBuilder()
@@ -54,7 +54,7 @@ public class Inventory {
                 .query();
     }
 
-    public List<Clothing> getAllBooks() throws SQLException {
+    public List<Clothing> getAllItems() throws SQLException {
         return JdbcDriverSetup.getDao(Clothing.class).queryForAll();
     }
 }

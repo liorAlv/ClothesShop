@@ -1,10 +1,10 @@
-package il.ac.hit.jfxclothesshop.library.sales;
+package il.ac.hit.jfxclothesshop.shop.sales;
 
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.shop.clothing.Clothing;
 import il.ac.hit.jfxclothesshop.person.Client;
 import lombok.*;
 
@@ -21,16 +21,16 @@ public class Sales {
     @DatabaseField(generatedId = true, allowGeneratedIdInsert = true)
     @Setter(AccessLevel.NONE)
     private int id;
-    @DatabaseField(foreign = true, columnName = "book_id", foreignColumnName = "id")
-    private Clothing book;
+    @DatabaseField(foreign = true, columnName = "item_id", foreignColumnName = "id")
+    private Clothing item;
     @DatabaseField(dataType = DataType.BOOLEAN_INTEGER)
     private boolean active;
 
     @Builder
-    public Sales(Client client, Clothing book, boolean active) {
+    public Sales(Client client, Clothing item, boolean active) {
         this.client = client;
         this.id = id;
-        this.book = book;
+        this.item = item;
         this.active = active;
         this.date = System.currentTimeMillis();
     }

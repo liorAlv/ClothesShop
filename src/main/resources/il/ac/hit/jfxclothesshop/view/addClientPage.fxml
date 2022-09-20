@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.ac.hit.jfxbookies.view.AddClientController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.ac.hit.jfxclothesshop.view.AddClientController">
    <children>
       <Button id="Back" fx:id="back2Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="&lt;-" />
       <Label layoutX="204.0" layoutY="39.0" text="New Client" textAlignment="CENTER" textFill="#59c4f0">

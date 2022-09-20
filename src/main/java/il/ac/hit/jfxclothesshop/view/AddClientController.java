@@ -1,9 +1,9 @@
-package il.ac.hit.jfxbookies.view;
+package il.ac.hit.jfxclothesshop.view;
 
-import il.ac.hit.jfxbookies.person.Client;
-import il.ac.hit.jfxbookies.person.managing.ClientUtils;
-import il.ac.hit.jfxbookies.person.managing.ClientManager;
-import il.ac.hit.jfxbookies.util.GraphicsUtils;
+import il.ac.hit.jfxclothesshop.person.Client;
+import il.ac.hit.jfxclothesshop.person.managing.ClientUtils;
+import il.ac.hit.jfxclothesshop.person.managing.ClientManager;
+import il.ac.hit.jfxclothesshop.util.GraphicsUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

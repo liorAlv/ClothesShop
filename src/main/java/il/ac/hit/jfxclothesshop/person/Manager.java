@@ -1,4 +1,4 @@
-package il.ac.hit.jfxbookies.person;
+package il.ac.hit.jfxclothesshop.person;
 
 public class Manager extends SalesPerson {
 

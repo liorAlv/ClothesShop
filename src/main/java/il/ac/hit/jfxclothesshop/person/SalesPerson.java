@@ -1,4 +1,4 @@
-package il.ac.hit.jfxbookies.person;
+package il.ac.hit.jfxclothesshop.person;
 
 public class SalesPerson extends AbstractPerson{
     private User user;

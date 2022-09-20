@@ -1,4 +1,4 @@
-package il.ac.hit.jfxbookies.util;
+package il.ac.hit.jfxclothesshop.util;
 
 import javafx.event.Event;
 import javafx.scene.Node;
@@ -21,9 +21,9 @@ public final class GraphicsUtils {
     //Move between pages
     public static <T> void openWindow(Event event, Class<T> controllerClass) {
         Parent root = fxWeaver.loadView(controllerClass);
-        Scene booksListScene = new Scene(root);
+        Scene itemsListScene = new Scene(root);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(booksListScene);
+        window.setScene(itemsListScene);
         window.show();
     }
 

@@ -1,8 +1,8 @@
-package il.ac.hit.jfxbookies.test;
+package il.ac.hit.jfxclothesshop.test;
 
 import de.saxsys.javafx.test.JfxRunner;
-import il.ac.hit.jfxbookies.person.managing.ClientManager;
-import il.ac.hit.jfxbookies.person.managing.ClientUtils;
+import il.ac.hit.jfxclothesshop.person.managing.ClientManager;
+import il.ac.hit.jfxclothesshop.person.managing.ClientUtils;
 import javafx.scene.control.TextField;
 import org.junit.Assert;
 import org.junit.Test;

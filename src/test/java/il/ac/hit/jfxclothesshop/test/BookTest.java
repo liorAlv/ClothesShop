@@ -1,9 +1,9 @@
-package il.ac.hit.jfxbookies.test;
+package il.ac.hit.jfxclothesshop.test;
 
 import javafx.embed.swing.JFXPanel;
-import il.ac.hit.jfxbookies.JdbcDriverSetup;
-import il.ac.hit.jfxbookies.library.clothing.Clothing;
-import il.ac.hit.jfxbookies.library.sales.Inventory;
+import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
+import il.ac.hit.jfxclothesshop.shop.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.shop.sales.Inventory;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

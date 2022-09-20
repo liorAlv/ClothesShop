@@ -1,12 +1,12 @@
-package il.ac.hit.jfxbookies;
+package il.ac.hit.jfxclothesshop;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import il.ac.hit.jfxbookies.library.clothing.Clothing;
-import il.ac.hit.jfxbookies.library.sales.Sales;
-import il.ac.hit.jfxbookies.person.Client;
+import il.ac.hit.jfxclothesshop.shop.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.shop.sales.Sales;
+import il.ac.hit.jfxclothesshop.person.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

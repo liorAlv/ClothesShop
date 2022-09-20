@@ -1,4 +1,4 @@
-package il.ac.hit.jfxbookies.person;
+package il.ac.hit.jfxclothesshop.person;
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;

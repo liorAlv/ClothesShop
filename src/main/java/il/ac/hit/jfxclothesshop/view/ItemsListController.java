@@ -1,8 +1,8 @@
 package il.ac.hit.jfxclothesshop.view;
 
-import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
-import il.ac.hit.jfxclothesshop.library.sales.SalesManager;
-import il.ac.hit.jfxclothesshop.library.sales.Inventory;
+import il.ac.hit.jfxclothesshop.shop.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.shop.sales.SalesManager;
+import il.ac.hit.jfxclothesshop.shop.sales.Inventory;
 import il.ac.hit.jfxclothesshop.person.Client;
 import il.ac.hit.jfxclothesshop.util.GraphicsUtils;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -25,12 +25,12 @@ import java.util.List;
 import static il.ac.hit.jfxclothesshop.session.SessionContext.getInstance;
 
 @Component
-@FxmlView("booksListPage.fxml")
-public class BooksListController {
+@FxmlView("itemsListPage.fxml")
+public class ItemsListController {
     @FXML
-    private Button newBookButton;
+    private Button newItemButton;
     @FXML
-    private TextField searchBookField;
+    private TextField searchItemField;
     @FXML
     private Button reportButton;
     @FXML
@@ -55,32 +55,32 @@ public class BooksListController {
     private Inventory inventory;
 
     @Autowired
-    private SalesManager bookBorrowManager;
+    private SalesManager itemBorrowManager;
 
     @Autowired
     private FxWeaver fxWeaver;
 
 
 
-    private final ObservableList<Clothing> bookObservableList = FXCollections.observableArrayList();
+    private final ObservableList<Clothing> itemObservableList = FXCollections.observableArrayList();
 
-    public BooksListController() {
+    public ItemsListController() {
 
     }
 
-    // enter the books data to the list
+    // enter the items data to the list
     public void initialize() {
         userData.setText(getInstance().getCurrentUser().toString());
-        newBookButton.setVisible(getInstance().isCurrentUserManager());
+        newItemButton.setVisible(getInstance().isCurrentUserManager());
         reportButton.setVisible(getInstance().isCurrentUserManager());
         dataTable.setRowFactory(tv -> {          //push double click on row and open new scene
             TableRow<Clothing> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    var book = row.getItem();
-                    getInstance().setCurrentBook(book);
-                    bookObservableList.clear();
-                    GraphicsUtils.openWindow(event, InfoBookController.class);
+                    var item = row.getItem();
+                    getInstance().setCurrentItem(item);
+                    itemObservableList.clear();
+                    GraphicsUtils.openWindow(event, InfoItemController.class);
                 }
             });
             return row;
@@ -88,7 +88,7 @@ public class BooksListController {
 
 
         try {
-            List<Clothing> c = inventory.getAllBooks();
+            List<Clothing> c = inventory.getAllItems();
             //show the data on table view
             idTableColumn.setCellValueFactory(new PropertyValueFactory<>("sku"));
             titleTableColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -96,11 +96,11 @@ public class BooksListController {
             categoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
             locationTableColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
             borrowedByColumn.setCellValueFactory(cellData -> {
-                var book = cellData.getValue();
+                var item = cellData.getValue();
                 try {
-                    Client activeClientForBook = bookBorrowManager.getActiveClientForBook(book.getSku());
-                    if (activeClientForBook != null) {
-                        return new ReadOnlyStringWrapper(Integer.toString(activeClientForBook.getId()));
+                    Client activeClientForItem = itemBorrowManager.getActiveClientForItem(item.getSku());
+                    if (activeClientForItem != null) {
+                        return new ReadOnlyStringWrapper(Integer.toString(activeClientForItem.getId()));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -108,13 +108,13 @@ public class BooksListController {
                 return null;
             });
 
-            bookObservableList.addAll(c);
-            dataTable.setItems(bookObservableList);
+            itemObservableList.addAll(c);
+            dataTable.setItems(itemObservableList);
             //search on data table
-            FilteredList<Clothing> filteredData = new FilteredList<>(bookObservableList, book -> true);
+            FilteredList<Clothing> filteredData = new FilteredList<>(itemObservableList, item -> true);
 
-            searchBookField.textProperty().addListener(((observableValue, oldValue, newValue) -> {
-                filteredData.setPredicate(book -> {
+            searchItemField.textProperty().addListener(((observableValue, oldValue, newValue) -> {
+                filteredData.setPredicate(item -> {
 
                     //if no search value then display all records or what ever records it current have. no change
                     if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -122,11 +122,11 @@ public class BooksListController {
                     }
 
                     String searchKeyWord = newValue.toLowerCase();
-                    return book.getTitle().toLowerCase().contains(searchKeyWord) ||
-                            book.getAuthor().toLowerCase().contains(searchKeyWord) ||
-                            book.getCategory().toLowerCase().contains(searchKeyWord) ||
-                            book.getLocation().toLowerCase().contains(searchKeyWord) ||
-                            Integer.toString(book.getSku()).contains(searchKeyWord);
+                    return item.getTitle().toLowerCase().contains(searchKeyWord) ||
+                            item.getAuthor().toLowerCase().contains(searchKeyWord) ||
+                            item.getCategory().toLowerCase().contains(searchKeyWord) ||
+                            item.getLocation().toLowerCase().contains(searchKeyWord) ||
+                            Integer.toString(item.getSku()).contains(searchKeyWord);
                 });
             }));
 
@@ -147,17 +147,17 @@ public class BooksListController {
 
     @FXML
     private void onClientButtonClick(ActionEvent event) {
-        bookObservableList.clear();   //That there will be no duplicates in data table
+        itemObservableList.clear();   //That there will be no duplicates in data table
         GraphicsUtils.openWindow(event, ClientListController.class); //Move between pages
     }
 
-    public void onNewBookButtonClick(ActionEvent event) {
-        bookObservableList.clear();   //That there will be no duplicates in data table
-        GraphicsUtils.openWindow(event, AddBookController.class);//Move between pages
+    public void onNewItemButtonClick(ActionEvent event) {
+        itemObservableList.clear();   //That there will be no duplicates in data table
+        GraphicsUtils.openWindow(event, AddItemController.class);//Move between pages
     }
 
     public void onReportButtonClick(ActionEvent event) {
-        bookObservableList.clear();//That there will be no duplicates in data table
+        itemObservableList.clear();//That there will be no duplicates in data table
         GraphicsUtils.openWindow(event, ReportController.class);//Move between pages
     }
 }

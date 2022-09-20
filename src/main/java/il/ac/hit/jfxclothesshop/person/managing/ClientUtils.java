@@ -1,4 +1,4 @@
-package il.ac.hit.jfxbookies.person.managing;
+package il.ac.hit.jfxclothesshop.person.managing;
 
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;

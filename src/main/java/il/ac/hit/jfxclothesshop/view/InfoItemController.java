@@ -1,10 +1,10 @@
 package il.ac.hit.jfxclothesshop.view;
 
 import il.ac.hit.jfxclothesshop.JdbcDriverSetup;
-import il.ac.hit.jfxclothesshop.library.clothing.Clothing;
-import il.ac.hit.jfxclothesshop.library.sales.SalesManager;
-import il.ac.hit.jfxclothesshop.library.sales.Sales;
-import il.ac.hit.jfxclothesshop.library.sales.Inventory;
+import il.ac.hit.jfxclothesshop.shop.clothing.Clothing;
+import il.ac.hit.jfxclothesshop.shop.sales.SalesManager;
+import il.ac.hit.jfxclothesshop.shop.sales.Sales;
+import il.ac.hit.jfxclothesshop.shop.sales.Inventory;
 import il.ac.hit.jfxclothesshop.person.Client;
 import il.ac.hit.jfxclothesshop.person.User;
 import il.ac.hit.jfxclothesshop.session.SessionContext;
@@ -25,11 +25,11 @@ import static il.ac.hit.jfxclothesshop.session.SessionContext.getInstance;
 
 
 @Component
-@FxmlView("infoBookPage.fxml")
-public class InfoBookController {
+@FxmlView("infoItemPage.fxml")
+public class InfoItemController {
 
     @FXML
-    private Button removeBookButton;
+    private Button removeItemButton;
     @FXML
     private Label skuLabel;
     @FXML
@@ -56,7 +56,7 @@ public class InfoBookController {
     private Label clientDoesntExist;
 
     @Autowired
-    private SalesManager bookBorrowManager;
+    private SalesManager itemBorrowManager;
 
 
     @Autowired
@@ -64,39 +64,39 @@ public class InfoBookController {
 
     public void initialize() {
         //Permissions for only manager on button
-        removeBookButton.setVisible(User.UserType.LIBRARIAN != getInstance().getCurrentUser().getUserType());
+        removeItemButton.setVisible(User.UserType.LIBRARIAN != getInstance().getCurrentUser().getUserType());
 
-        //if the book is borrowed
-        Clothing book = SessionContext.getInstance().getCurrentBook();
-        Client activeClientForBook = null;
+        //if the item is borrowed
+        Clothing item = SessionContext.getInstance().getCurrentItem();
+        Client activeClientForItem = null;
         try {
-            activeClientForBook = bookBorrowManager.getActiveClientForBook(book.getSku());
+            activeClientForItem = itemBorrowManager.getActiveClientForItem(item.getSku());
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        //show the specific book data
-        skuLabel.setText(String.valueOf(book.getSku()));
-        titleLabel.setText(book.getTitle());
-        authorLabel.setText(book.getAuthor());
-        categoryLabel.setText(book.getCategory());
-        locationLabel.setText(book.getLocation());
-        if (activeClientForBook != null) {     //borrowed book
+        //show the specific item data
+        skuLabel.setText(String.valueOf(item.getSku()));
+        titleLabel.setText(item.getTitle());
+        authorLabel.setText(item.getAuthor());
+        categoryLabel.setText(item.getCategory());
+        locationLabel.setText(item.getLocation());
+        if (activeClientForItem != null) {     //borrowed item
             isBorrowedLabel.setText("Borrowed");
-            clientLabel.setText(activeClientForBook.getInfo());
+            clientLabel.setText(activeClientForItem.getInfo());
             borrowButton.setVisible(false);
             explanationText.setVisible(false);
             clientIdPhoneField.setVisible(false);
         } else {
-            isBorrowedLabel.setText("In library");
+            isBorrowedLabel.setText("In shop");
             returnButton.setVisible(false);
         }
 
 
     }
 
-    //delete book
-    public void onRemoveBookButtonClick(ActionEvent event) {
+    //delete item
+    public void onRemoveItemButtonClick(ActionEvent event) {
         Inventory inventory = new Inventory();
         try {
             inventory.remove(Integer.parseInt(skuLabel.getText()));
@@ -106,8 +106,8 @@ public class InfoBookController {
     }
 
     public void onBackButtonClick(ActionEvent event) {
-        SessionContext.getInstance().setCurrentBook(null);
-        GraphicsUtils.openWindow(event, BooksListController.class);//Move between pages
+        SessionContext.getInstance().setCurrentItem(null);
+        GraphicsUtils.openWindow(event, ItemsListController.class);//Move between pages
     }
 
     public void onBorrowButtonClick(ActionEvent event) {
@@ -120,7 +120,7 @@ public class InfoBookController {
             }
             else {
 
-                bookBorrowManager.borrowBookByClient(SessionContext.getInstance().getCurrentBook(), client);
+                itemBorrowManager.borrowItemByClient(SessionContext.getInstance().getCurrentItem(), client);
                 onBackButtonClick(event);
             }
 
@@ -133,25 +133,25 @@ public class InfoBookController {
     }
 
     public void onReturnButtonClick(ActionEvent actionEvent) {
-        Client activeClientForBook = null;
-        Clothing book = null;
+        Client activeClientForItem = null;
+        Clothing item = null;
         try {
-            book = SessionContext.getInstance().getCurrentBook();
-            activeClientForBook = bookBorrowManager.getActiveClientForBook(book.getSku());
-            Sales borrowBook = JdbcDriverSetup.getDao(Sales.class).queryBuilder()
+            item = SessionContext.getInstance().getCurrentItem();
+            activeClientForItem = itemBorrowManager.getActiveClientForItem(item.getSku());
+            Sales borrowItem = JdbcDriverSetup.getDao(Sales.class).queryBuilder()
                     .where()
-                    .eq("book_id", SessionContext.getInstance().getCurrentBook().getSku())
+                    .eq("item_id", SessionContext.getInstance().getCurrentItem().getSku())
                     .and()
-                    .eq("client_id", activeClientForBook.getId())
+                    .eq("client_id", activeClientForItem.getId())
                     .and()
                     .eq("active", true)
                     .queryForFirst();
-            bookBorrowManager.deactivateBookBorrow(borrowBook);
+            itemBorrowManager.deactivateItemBorrow(borrowItem);
             returnButton.setVisible(false);
             borrowButton.setVisible(true);
             explanationText.setVisible(true);
             clientIdPhoneField.setVisible(true);
-            isBorrowedLabel.setText("In library");
+            isBorrowedLabel.setText("In shop");
             clientLabel.setText("");
 
 
