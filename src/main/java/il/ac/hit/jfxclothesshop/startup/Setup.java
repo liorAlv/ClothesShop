@@ -13,6 +13,9 @@ import lombok.NoArgsConstructor;
 public class Setup {
     private String managerUser;
     private String managerPassword;
+    private String managerPhone;
+    private String managerIdPerson;
+    private String managerName;
     private String librarianUser;
     private String librarianPassword;
     private String librarian2User;
@@ -21,12 +24,18 @@ public class Setup {
     @JsonCreator
     public Setup(@JsonProperty("managerUser") String managerUser,
                  @JsonProperty("managerPassword") String managerPassword,
+                 @JsonProperty("managerPhone") String managerPhone,
+                 @JsonProperty("managerIdPerson") String managerIdPerson,
+                 @JsonProperty("managerName") String managerName,
                  @JsonProperty("librarianUser") String librarianUser,
                  @JsonProperty("librarianPassword") String librarianPassword,
                  @JsonProperty("librarian2User") String librarian2User,
                  @JsonProperty("librarian2Password") String librarian2Password)  {
         this.managerUser = managerUser;
         this.managerPassword = managerPassword;
+        this.managerPhone=managerPhone;
+        this.managerIdPerson=managerIdPerson;
+        this.managerName=managerName;
         this.librarianUser = librarianUser;
         this.librarianPassword = librarianPassword;
         this.librarian2User = librarian2User;

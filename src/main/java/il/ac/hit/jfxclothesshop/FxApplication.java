@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.rgielen.fxweaver.core.FxWeaver;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -87,13 +88,13 @@ public class FxApplication extends Application {
         Setup setup = objectMapper.readValue(file, Setup.class);
         JdbcDriverSetup
                 .getDao(User.class)
-                .create(User.buildUser(setup.getManagerUser(), setup.getManagerPassword(), User.UserType.MANAGER));
-        JdbcDriverSetup
-                .getDao(User.class)
-                .create(User.buildUser(setup.getLibrarianUser(), setup.getLibrarianPassword(), User.UserType.SALESPERSON));
-        JdbcDriverSetup
-                .getDao(User.class)
-                .create(User.buildUser(setup.getLibrarian2User(), setup.getLibrarian2Password(), User.UserType.SALESPERSON));
+                .create(new User(setup.getManagerUser(), setup.getManagerPassword(), User.UserType.MANAGER, setup.getManagerName(), setup.getManagerIdPerson(), setup.getManagerPhone()));
+//        JdbcDriverSetup
+//                .getDao(User.class)
+//                .create(User.buildUser(setup.getLibrarianUser(), setup.getLibrarianPassword(), User.UserType.SALESPERSON));
+//        JdbcDriverSetup
+//                .getDao(User.class)
+//                .create(User.buildUser(setup.getLibrarian2User(), setup.getLibrarian2Password(), User.UserType.SALESPERSON));
     }
 
 
