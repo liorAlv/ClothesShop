@@ -20,6 +20,7 @@ public class User {
     @DatabaseField(dataType = DataType.ENUM_STRING)
     private UserType userType;
 
+
     public static User buildUser(String username, String password, UserType userType1) {
 
         return User.builder()
@@ -30,7 +31,7 @@ public class User {
     }
 
     public enum UserType {
-        MANAGER, LIBRARIAN
+        MANAGER, SALESPERSON
     }
 
 

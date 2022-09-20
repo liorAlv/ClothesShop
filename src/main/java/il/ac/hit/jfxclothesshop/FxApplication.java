@@ -90,10 +90,10 @@ public class FxApplication extends Application {
                 .create(User.buildUser(setup.getManagerUser(), setup.getManagerPassword(), User.UserType.MANAGER));
         JdbcDriverSetup
                 .getDao(User.class)
-                .create(User.buildUser(setup.getLibrarianUser(), setup.getLibrarianPassword(), User.UserType.LIBRARIAN));
+                .create(User.buildUser(setup.getLibrarianUser(), setup.getLibrarianPassword(), User.UserType.SALESPERSON));
         JdbcDriverSetup
                 .getDao(User.class)
-                .create(User.buildUser(setup.getLibrarian2User(), setup.getLibrarian2Password(), User.UserType.LIBRARIAN));
+                .create(User.buildUser(setup.getLibrarian2User(), setup.getLibrarian2Password(), User.UserType.SALESPERSON));
     }
 
 
