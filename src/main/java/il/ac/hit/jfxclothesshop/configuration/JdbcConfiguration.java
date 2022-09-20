@@ -15,7 +15,7 @@ public class JdbcConfiguration {
     @Bean
     @Primary
     public String JdbcConnectionString() {
-        return "jdbc:sqlite:src/main/resources/bookies.db";
+        return "jdbc:sqlite:src/main/resources/clothesshop.db";
     }
 
     @Bean

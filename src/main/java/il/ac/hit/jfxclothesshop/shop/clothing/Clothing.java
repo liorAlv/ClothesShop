@@ -8,7 +8,7 @@ import lombok.*;
 
 import java.sql.SQLException;
 
-@DatabaseTable//(tableName = "items")
+@DatabaseTable(tableName = "items")
 @NoArgsConstructor
 @Data
 public class Clothing {
@@ -18,7 +18,9 @@ public class Clothing {
     @DatabaseField
     private String title;
     @DatabaseField
-    private String author;
+    private String price;
+    @DatabaseField
+    private String amount;
     @DatabaseField
     private String category;
     @DatabaseField
@@ -26,9 +28,10 @@ public class Clothing {
 
     //Constructors
     @Builder
-    public Clothing(String title, String author, String category, String location){
+    public Clothing(String title, String price, String amount, String category, String location){
         this.title=title;
-        this.author=author;
+        this.price=price;
+        this.amount=amount;
         this.category=category;
         this.location=location;
 

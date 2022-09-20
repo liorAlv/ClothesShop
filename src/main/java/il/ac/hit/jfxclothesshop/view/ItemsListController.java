@@ -43,13 +43,13 @@ public class ItemsListController {
     @FXML
     private TableColumn<Clothing, String> titleTableColumn;
     @FXML
-    private TableColumn<Clothing, String> authorTableColumn;
+    private TableColumn<Clothing, String> priceTableColumn;
     @FXML
     private TableColumn<Clothing, String> categoryTableColumn;
     @FXML
     private TableColumn<Clothing, String> locationTableColumn;
     @FXML
-    private TableColumn<Clothing, String> borrowedByColumn;
+    private TableColumn<Clothing, String> amountTableColumn;
 
     @Autowired
     private Inventory inventory;
@@ -92,21 +92,10 @@ public class ItemsListController {
             //show the data on table view
             idTableColumn.setCellValueFactory(new PropertyValueFactory<>("sku"));
             titleTableColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-            authorTableColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+            priceTableColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
             categoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
             locationTableColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
-            borrowedByColumn.setCellValueFactory(cellData -> {
-                var item = cellData.getValue();
-                try {
-                    Client activeClientForItem = itemBorrowManager.getActiveClientForItem(item.getSku());
-                    if (activeClientForItem != null) {
-                        return new ReadOnlyStringWrapper(Integer.toString(activeClientForItem.getId()));
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            });
+            amountTableColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
             itemObservableList.addAll(c);
             dataTable.setItems(itemObservableList);
@@ -123,9 +112,10 @@ public class ItemsListController {
 
                     String searchKeyWord = newValue.toLowerCase();
                     return item.getTitle().toLowerCase().contains(searchKeyWord) ||
-                            item.getAuthor().toLowerCase().contains(searchKeyWord) ||
+                            item.getPrice().toLowerCase().contains(searchKeyWord) ||
                             item.getCategory().toLowerCase().contains(searchKeyWord) ||
                             item.getLocation().toLowerCase().contains(searchKeyWord) ||
+                            item.getAmount().toLowerCase().contains(searchKeyWord) ||
                             Integer.toString(item.getSku()).contains(searchKeyWord);
                 });
             }));
@@ -159,5 +149,8 @@ public class ItemsListController {
     public void onReportButtonClick(ActionEvent event) {
         itemObservableList.clear();//That there will be no duplicates in data table
         GraphicsUtils.openWindow(event, ReportController.class);//Move between pages
+    }
+
+    public void onEmployeesButtonClick(ActionEvent event) {
     }
 }

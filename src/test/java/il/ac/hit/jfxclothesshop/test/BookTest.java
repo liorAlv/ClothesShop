@@ -29,10 +29,10 @@ public class BookTest {
     }
 
     @Test
-    public void addBook() throws Exception
+    public void addItem() throws Exception
     {
         Clothing book = new Clothing();
-        book.setAuthor("J.K Rolling");
+        book.setPrice("J.K Rolling");
         book.setCategory("Fantasy");
         book.setLocation("G6");
         book.setTitle("Harry potter");

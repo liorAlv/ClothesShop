@@ -35,11 +35,13 @@ public class InfoItemController {
     @FXML
     private Label titleLabel;
     @FXML
-    private Label authorLabel;
+    private Label priceLabel;
     @FXML
     private Label categoryLabel;
     @FXML
     private Label locationLabel;
+    @FXML
+    private Label amountLabel;
     @FXML
     private Label isBorrowedLabel;
     @FXML
@@ -78,9 +80,10 @@ public class InfoItemController {
         //show the specific item data
         skuLabel.setText(String.valueOf(item.getSku()));
         titleLabel.setText(item.getTitle());
-        authorLabel.setText(item.getAuthor());
+        priceLabel.setText(item.getPrice());
         categoryLabel.setText(item.getCategory());
         locationLabel.setText(item.getLocation());
+        amountLabel.setText(item.getAmount());
         if (activeClientForItem != null) {     //borrowed item
             isBorrowedLabel.setText("Borrowed");
             clientLabel.setText(activeClientForItem.getInfo());

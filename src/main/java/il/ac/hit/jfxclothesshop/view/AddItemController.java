@@ -21,11 +21,13 @@ public class AddItemController {
     @FXML
     private TextField titleTextField;
     @FXML
-    private TextField authorTextField;
+    private TextField priceTextField;
     @FXML
     private TextField categoryTextField;
     @FXML
     private TextField locationTextField;
+    @FXML
+    private TextField amountTextField;
     @FXML
     private Label errorLabel;
 
@@ -39,11 +41,11 @@ public class AddItemController {
     }
 
     public void onAddItemButtonClick(ActionEvent event) {
-        if(titleTextField.getText().isBlank() || authorTextField.getText().isBlank() || categoryTextField.getText().isBlank() || locationTextField.getText().isBlank()){
+        if(titleTextField.getText().isBlank() || priceTextField.getText().isBlank() || categoryTextField.getText().isBlank() || locationTextField.getText().isBlank() || amountTextField.getText().isBlank() ){
             errorLabel.setText("Please check that you filled the information correctly");
             //if the field empty
         } else {
-            Clothing item = new Clothing(titleTextField.getText(), authorTextField.getText(), categoryTextField.getText(), locationTextField.getText());
+            Clothing item = new Clothing(titleTextField.getText(), priceTextField.getText(), amountTextField.getText(), categoryTextField.getText(), locationTextField.getText());
             //add the information item to data
 
             try {
