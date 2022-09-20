@@ -66,7 +66,7 @@ public class InfoItemController {
 
     public void initialize() {
         //Permissions for only manager on button
-        removeItemButton.setVisible(User.UserType.LIBRARIAN != getInstance().getCurrentUser().getUserType());
+        removeItemButton.setVisible(User.UserType.SALESPERSON != getInstance().getCurrentUser().getUserType());
 
         //if the item is borrowed
         Clothing item = SessionContext.getInstance().getCurrentItem();

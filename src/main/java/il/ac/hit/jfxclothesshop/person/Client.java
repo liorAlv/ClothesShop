@@ -11,20 +11,16 @@ import lombok.*;
 @ToString
 public class Client extends AbstractPerson {
 
-    @DatabaseField(unique = true)
-    private String phone;
+
+
     @DatabaseField
-    private String address;
-    @DatabaseField
-    private String email;
+    private String type;
 
 
     @Builder
-    public Client(String name, String email, String phone, String address) {
-        super(name);
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
+    public Client(String name, String phone, String idPerson, String type) {
+        super(name, phone, idPerson);
+        this.type=type;
     }
 
     @Override

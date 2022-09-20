@@ -14,13 +14,13 @@
       </Label>
       <Label layoutX="155.0" layoutY="150.0" text="Name:" />
       <TextField id="nameText" fx:id="nameTextField" layoutX="202.0" layoutY="146.0" prefHeight="25.0" prefWidth="211.0" />
-      <Label layoutX="155.0" layoutY="187.0" text="Email:" />
-      <TextField id="emailText" fx:id="emailTextField" layoutX="202.0" layoutY="183.0" prefHeight="25.0" prefWidth="211.0" />
+      <Label layoutX="141.0" layoutY="187.0" text="Id Person:" />
+      <TextField id="idPersonText" fx:id="idPersonTextField" layoutX="202.0" layoutY="183.0" prefHeight="25.0" prefWidth="211.0" />
       <Label layoutX="155.0" layoutY="228.0" text="Phone:" />
       <TextField id="phoneText" fx:id="phoneTextField" layoutX="202.0" layoutY="224.0" prefHeight="25.0" prefWidth="211.0" />
-      <Label layoutX="147.0" layoutY="269.0" text="Address:" />
-      <TextField id="addressText" fx:id="addressTextField" layoutX="202.0" layoutY="265.0" prefHeight="25.0" prefWidth="211.0" />
-      <Button id="AddClient" fx:id="addClientButton" layoutX="261.0" layoutY="333.0" mnemonicParsing="false" onAction="#onAddClientButtonClick" text="Add Client" />
-      <Label fx:id="responseTextFalseInformation" layoutX="141.0" layoutY="300.0" prefHeight="17.0" prefWidth="294.0" textFill="#e90d0d" />
+      <Label layoutX="157.0" layoutY="269.0" text="Type:" />
+      <TextField id="addressText" fx:id="typeTextField" layoutX="202.0" layoutY="265.0" prefHeight="25.0" prefWidth="211.0" />
+      <Button id="AddClient" fx:id="addClientButton" layoutX="261.0" layoutY="339.0" mnemonicParsing="false" onAction="#onAddClientButtonClick" text="Add Client" />
+      <Label fx:id="responseTextFalseInformation" layoutX="161.0" layoutY="302.0" prefHeight="17.0" prefWidth="294.0" textFill="#e90d0d" />
         </children>
 </AnchorPane>

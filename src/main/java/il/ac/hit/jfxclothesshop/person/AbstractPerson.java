@@ -15,9 +15,20 @@ public abstract class AbstractPerson {
     @Setter
     @DatabaseField()
     protected String name;
+    @Setter
+    @DatabaseField(unique = true)
+    private String phone;
+    @Setter
+    @DatabaseField(unique = true)
+    private String idPerson;
 
-    public AbstractPerson(String name) {
+
+
+    public AbstractPerson(String name, String phone, String idPerson) {
+
         this.name = name;
+        this.phone=phone;
+        this.idPerson=idPerson;
     }
 
     public abstract String getInfo();

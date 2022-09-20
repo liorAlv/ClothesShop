@@ -36,9 +36,9 @@ public class ClientListController {
     @FXML
     private TableColumn<Client, String> nameCTableColumn;
     @FXML
-    private TableColumn<Client, String> emailCTableColumn;
+    private TableColumn<Client, String> idPersonCTableColumn;
     @FXML
-    private TableColumn<Client, String> addressCTableColumn;
+    private TableColumn<Client, String> typeCTableColumn;
     @FXML
     private TableColumn<Client, String> phoneCTableColumn;
 
@@ -68,8 +68,8 @@ public class ClientListController {
             List<Client> c = JdbcDriverSetup.getDao(Client.class).queryForAll();
             idCTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             nameCTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-            emailCTableColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-            addressCTableColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+            idPersonCTableColumn.setCellValueFactory(new PropertyValueFactory<>("idPerson"));
+            typeCTableColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
             phoneCTableColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
             clientObservableList.addAll(c);
             dataTable.setItems(clientObservableList);
@@ -85,9 +85,9 @@ public class ClientListController {
                     }
                     String searchKeyWord = newValue.toLowerCase();
                     return client.getName().toLowerCase().contains(searchKeyWord) ||
-                            client.getEmail().toLowerCase().contains(searchKeyWord) ||
+                            client.getIdPerson().toLowerCase().contains(searchKeyWord) ||
                             client.getPhone().toLowerCase().contains(searchKeyWord) ||
-                            client.getAddress().toLowerCase().contains(searchKeyWord)||
+                            client.getType().toLowerCase().contains(searchKeyWord)||
                             Integer.toString(client.getId()).contains(searchKeyWord);
 
                 });

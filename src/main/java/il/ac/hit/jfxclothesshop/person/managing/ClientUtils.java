@@ -17,13 +17,13 @@ public final class ClientUtils {
 
     public static boolean isClientInputNotOkay(TextField phone,
                                          TextField name,
-                                         TextField email,
-                                         TextField address) throws SQLException {
+                                         TextField type,
+                                         TextField idPerson) throws SQLException {
         return !phone.getText().matches("^0\\d+$") ||     //phone number start with 0 and end with number
                 name.getText().isBlank() ||
-                email.getText().isBlank() ||
+                type.getText().isBlank() ||
                 phone.getText().isBlank() ||
-                address.getText().isBlank()||
+                idPerson.getText().isBlank()||
                 clientManager.getClientByIdOrPhone(null, phone.getText()) != null;
     }
 }

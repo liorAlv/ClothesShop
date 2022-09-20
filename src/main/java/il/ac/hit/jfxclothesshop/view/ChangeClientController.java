@@ -24,9 +24,9 @@ public class ChangeClientController {
     @FXML
     private TextField changeNameTextField;
     @FXML
-    private TextField changeEmailTextField;
+    private TextField changeIdPersonTextField;
     @FXML
-    private TextField changeAddressTextField;
+    private TextField changeTypeTextField;
     @FXML
     private TextField changePhoneTextField;
     @FXML
@@ -42,8 +42,8 @@ public class ChangeClientController {
         Client client = SessionContext.getInstance().getCurrentClient();
         idLabel.setText(String.valueOf(client.getId()));
         changeNameTextField.setText(client.getName());
-        changeEmailTextField.setText(client.getEmail());
-        changeAddressTextField.setText(client.getAddress());
+        changeIdPersonTextField.setText(client.getIdPerson());
+        changeTypeTextField.setText(client.getType());
         changePhoneTextField.setText(client.getPhone());
     }
 
@@ -71,13 +71,13 @@ public class ChangeClientController {
     public void onSaveChangesButtonClick(ActionEvent event) {
         try {
             //if the field empty or phone number starting with 0 and end with number
-            if (ClientUtils.isClientInputNotOkay(changePhoneTextField, changeNameTextField, changeEmailTextField, changeAddressTextField)) {
+            if (ClientUtils.isClientInputNotOkay(changePhoneTextField, changeNameTextField, changeIdPersonTextField, changeTypeTextField)) {
                 informationLabel.setText("Please check that you filled the information correctly");
             } else {      //push the new(change) data
                 Client client = SessionContext.getInstance().getCurrentClient();
                 client.setName(changeNameTextField.getText());
-                client.setAddress(changeAddressTextField.getText());
-                client.setEmail(changeEmailTextField.getText());
+                client.setType(changeTypeTextField.getText());
+                client.setIdPerson(changeIdPersonTextField.getText());
                 client.setPhone(changePhoneTextField.getText());
 
                 clientManager.updateClient(client);

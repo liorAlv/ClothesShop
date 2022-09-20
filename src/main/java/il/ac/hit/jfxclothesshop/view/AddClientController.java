@@ -22,11 +22,11 @@ public class AddClientController {
     @FXML
     private TextField nameTextField;
     @FXML
-    private TextField emailTextField;
+    private TextField idPersonTextField;
     @FXML
     private TextField phoneTextField;
     @FXML
-    private TextField addressTextField;
+    private TextField typeTextField;
     @FXML
     private Label responseTextFalseInformation;
 
@@ -45,15 +45,15 @@ public class AddClientController {
     public void onAddClientButtonClick(ActionEvent event) {
         //if the field empty or phone number starting with 0
         try {
-            if (ClientUtils.isClientInputNotOkay(phoneTextField, nameTextField, emailTextField, addressTextField)) {
+            if (ClientUtils.isClientInputNotOkay(phoneTextField, nameTextField,  idPersonTextField, typeTextField)) {
                 responseTextFalseInformation.setText("Please check that you filled the information correctly");
             } else {      //add the information client to data
                 Client client = Client
                         .builder()
                         .name(nameTextField.getText())
-                        .email(emailTextField.getText())
+                        .idPerson(idPersonTextField.getText())
                         .phone(phoneTextField.getText())
-                        .address(addressTextField.getText())
+                        .type(typeTextField.getText())
                         .build();
                 clientManager.addClient(client);
                 onBackButtonClick(event); //Move between pages

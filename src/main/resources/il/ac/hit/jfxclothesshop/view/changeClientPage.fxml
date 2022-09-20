@@ -15,10 +15,10 @@
       <Button fx:id="removeClientButton" layoutX="471.0" layoutY="278.0" mnemonicParsing="false" onAction="#onRemoveClientButtonClick" text="Remove Client" />
       <Label layoutX="121.0" layoutY="151.0" text="Change name:" />
       <TextField fx:id="changeNameTextField" layoutX="204.0" layoutY="147.0" prefHeight="25.0" prefWidth="191.0" />
-      <Label layoutX="121.0" layoutY="191.0" text="Change email:" />
-      <TextField fx:id="changeEmailTextField" layoutX="204.0" layoutY="187.0" prefHeight="25.0" prefWidth="191.0" />
-      <Label layoutX="113.0" layoutY="238.0" text="Change Address:" />
-      <TextField fx:id="changeAddressTextField" layoutX="204.0" layoutY="234.0" prefHeight="25.0" prefWidth="191.0" />
+      <Label layoutX="102.0" layoutY="191.0" text="Change Id Person:" />
+      <TextField fx:id="changeIdPersonTextField" layoutX="204.0" layoutY="187.0" prefHeight="25.0" prefWidth="191.0" />
+      <Label layoutX="125.0" layoutY="238.0" text="Change Type:" />
+      <TextField fx:id="changeTypeTextField" layoutX="204.0" layoutY="234.0" prefHeight="25.0" prefWidth="191.0" />
       <Label layoutX="122.0" layoutY="282.0" text="Change phone:" />
       <TextField fx:id="changePhoneTextField" layoutX="207.0" layoutY="278.0" prefHeight="25.0" prefWidth="191.0" />
       <Button fx:id="saveChangesButton" layoutX="258.0" layoutY="333.0" mnemonicParsing="false" onAction="#onSaveChangesButtonClick" text="Save Changes" />
