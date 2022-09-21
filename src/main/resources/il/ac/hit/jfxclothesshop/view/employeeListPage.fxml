@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.ac.hit.jfxclothesshop.view.EmployeeListController">
+   <children>
+       <TableView fx:id="dataTable" layoutX="17.0" layoutY="121.0" prefHeight="264.0" prefWidth="668.0">
+           <columns>
+               <TableColumn fx:id="numberCTableColumn" prefWidth="53.66667366027832" text="User Nu." />
+               <TableColumn fx:id="idCTableColumn" prefWidth="98.66667938232422" text="ID" />
+               <TableColumn fx:id="nameCTableColumn" prefWidth="111.99998474121094" text="Name" />
+               <TableColumn fx:id="phoneCTableColumn" prefWidth="92.66665649414062" text="Phone" />
+               <TableColumn fx:id="bankAccountCTableColumn" prefWidth="111.00003051757812" text="Bank account" />
+               <TableColumn fx:id="jobCTableColumn" minWidth="0.0" prefWidth="100.66671752929688" text="Job" />
+               <TableColumn fx:id="branchCTableColumn" prefWidth="117.66668701171875" text="Branch" />
+
+           </columns>
+       </TableView>
+       <Label layoutX="283.0" layoutY="27.0" text="USERS" textAlignment="CENTER" textFill="#59c4f0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font></Label>
+       <Button id="back" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="&lt;-" />
+      <Button id="addNewUser" fx:id="addNewUser" layoutX="580.0" layoutY="14.0" mnemonicParsing="false" onAction="#onAddNewUserButtonClick" text="Add New User" />
+   </children>
+</AnchorPane>

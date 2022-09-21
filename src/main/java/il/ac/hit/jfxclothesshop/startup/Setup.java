@@ -16,30 +16,27 @@ public class Setup {
     private String managerPhone;
     private String managerIdPerson;
     private String managerName;
-    private String librarianUser;
-    private String librarianPassword;
-    private String librarian2User;
-    private String librarian2Password;
+    private String managerAccountNumber;
+    private String managerBranch;
+    private String managerType;
+
 //this code will help to read the setup.jason file
     @JsonCreator
     public Setup(@JsonProperty("managerUser") String managerUser,
                  @JsonProperty("managerPassword") String managerPassword,
-                 @JsonProperty("managerPhone") String managerPhone,
-                 @JsonProperty("managerIdPerson") String managerIdPerson,
                  @JsonProperty("managerName") String managerName,
-                 @JsonProperty("librarianUser") String librarianUser,
-                 @JsonProperty("librarianPassword") String librarianPassword,
-                 @JsonProperty("librarian2User") String librarian2User,
-                 @JsonProperty("librarian2Password") String librarian2Password)  {
+                 @JsonProperty("managerIdPerson") String managerIdPerson,
+                 @JsonProperty("managerPhone") String managerPhone,
+                 @JsonProperty("managerAccountNumber") String managerAccountNumber,
+                 @JsonProperty("managerBranch") String managerBranch,
+                 @JsonProperty("managerType") String managerType){
         this.managerUser = managerUser;
         this.managerPassword = managerPassword;
-        this.managerPhone=managerPhone;
-        this.managerIdPerson=managerIdPerson;
         this.managerName=managerName;
-        this.librarianUser = librarianUser;
-        this.librarianPassword = librarianPassword;
-        this.librarian2User = librarian2User;
-        this.librarian2Password = librarian2Password;
-
+        this.managerIdPerson=managerIdPerson;
+        this.managerPhone=managerPhone;
+        this.managerAccountNumber=managerAccountNumber;
+        this.managerBranch=managerBranch;
+        this.managerType=managerType;
     }
 }

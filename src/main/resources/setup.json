@@ -1,9 +1,10 @@
 {
   "managerUser": "manager",
   "managerPassword": "12345",
-  "mana"
-  "librarianUser": "librarian",
-  "librarianPassword": "12345",
-  "librarian2User": "tUser2",
-  "librarian2Password": "tPassword2"
+  "managerPhone" : "0595222245",
+  "managerIdPerson" : "31837361",
+  "managerName" : "li",
+  "managerAccountNumber" : "345",
+  "managerBranch" : "1",
+  "managerType" : "manager"
 }

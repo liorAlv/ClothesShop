@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import lombok.*;
 
 @Data
-@DatabaseTable
+@DatabaseTable(tableName = "client")
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

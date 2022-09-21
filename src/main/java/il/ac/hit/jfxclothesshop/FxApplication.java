@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import il.ac.hit.jfxclothesshop.person.User;
+import il.ac.hit.jfxclothesshop.person.managing.UserManager;
 import il.ac.hit.jfxclothesshop.startup.Setup;
 import il.ac.hit.jfxclothesshop.view.LoginController;
 import javafx.application.Application;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.rgielen.fxweaver.core.FxWeaver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -25,6 +27,11 @@ import java.sql.SQLException;
 //@SpringBootApplication(scanBasePackages = "il.ac.hit.jfxclothesshop.*")
 public class FxApplication extends Application {
     private ConfigurableApplicationContext springContext;
+    @Autowired
+    private FxWeaver fxWeaver;
+
+    @Autowired
+    private UserManager userManager;
 
     @Override
     public void init() {
@@ -51,9 +58,8 @@ public class FxApplication extends Application {
             which then it will enter the if and will create the table.
             this makes sure that the data of the user's username and password will be saved.
             the application will open a file explorer the user will need to go to the setup.json file.
-
-
             */
+
             try {
                 TableUtils.createTable(connectionSource, User.class);
                 tableAlreadyCreated = false;
@@ -86,15 +92,19 @@ public class FxApplication extends Application {
     //puts the users in the table
     private void setupUserTable(File file, ObjectMapper objectMapper) throws IOException, SQLException {
         Setup setup = objectMapper.readValue(file, Setup.class);
-        JdbcDriverSetup
-                .getDao(User.class)
-                .create(new User(setup.getManagerUser(), setup.getManagerPassword(), User.UserType.MANAGER, setup.getManagerName(), setup.getManagerIdPerson(), setup.getManagerPhone()));
-//        JdbcDriverSetup
-//                .getDao(User.class)
-//                .create(User.buildUser(setup.getLibrarianUser(), setup.getLibrarianPassword(), User.UserType.SALESPERSON));
-//        JdbcDriverSetup
-//                .getDao(User.class)
-//                .create(User.buildUser(setup.getLibrarian2User(), setup.getLibrarian2Password(), User.UserType.SALESPERSON));
+        User user=User
+                .builder()
+                .username(setup.getManagerUser())
+                .password(setup.getManagerPassword())
+                .userType(User.UserType.MANAGER)
+                .accountNumber(setup.getManagerAccountNumber())
+                .branch(setup.getManagerBranch())
+                .phone(setup.getManagerPhone())
+                .idPerson(setup.getManagerIdPerson())
+                .name(setup.getManagerName())
+                .type(setup.getManagerType())
+                .build();
+        userManager.addUser(user);
     }
 
 
